@@ -48,12 +48,52 @@ function criarCobrinha(){
 
 
 
+ //mexer com os controles dela e fazer com que não suma 
+ //da tela. 
+ //fazer que o programa reconheça as teclas do teclado
+ //com os valores corretos. Transmitindo o código da tecla
+ //para a função.
+
+ //pega o clique do teclado (keydown) e chama o update
+document.addEventListener('Keydown', update);
+
+//se o número for 37, direita
+//38 para baixo
+//39 para esquerda
+//40 para cima
+//a cobra não pode ir para a exata direção oposta ao passo
+//anterior, então usa-se uma ordem condicional para isso
+//argumento é o evento de tecla
+function update (event){
+    if(event.keyCode == 37 && direções != "right"){
+        direções = "left";
+    }
+    if(event.keyCode == 38 && direções != "down"){
+        direções = "up";
+    }
+    if(event.keyCode == 39 && direções != "left"){
+        direções = "right";
+    }
+    if(event.keyCode == 40 && direções != "up"){
+        direções = "down";
+    }
+}
+
+
+
 
 //criar função que atualize o jogo de tempos em tempos
 //para que ele consiga se mover nesse intervalo
 //e ela vai parar o jogo quando a cobrinha 
 //encostar no próprio corpo
 function iniciarJogo(){
+
+    //permitir que ela saia por um lado e volte pelo outro 
+    //com um plano cartesiano que tem o x0 e o y0 
+    //indo até 16 dos dois lados. Quando chegar no zero, volta
+    // o valor no 15 e vice versa 
+
+
     //passar todas as outras funções para iniciar tudo
     criarBG();
     criarCobrinha();
@@ -89,7 +129,6 @@ function iniciarJogo(){
         x: snakeX,
         y: snakeY
     }
-
     snake.unshift(newHead);
 }
 
