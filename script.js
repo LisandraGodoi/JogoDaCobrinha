@@ -92,7 +92,19 @@ function iniciarJogo(){
     //com um plano cartesiano que tem o x0 e o y0 
     //indo até 16 dos dois lados. Quando chegar no zero, volta
     // o valor no 15 e vice versa 
-
+    //se snake[0].(cabeça) passar de 15, volta para zero
+    if(snake[0].x > 15 * box && direções == "right"){
+        snake[0].x = 0;
+    }
+    if(snake[0].x < 0 * box && direções == "left"){
+        snake[0].x = 16 * box;
+    }
+    if(snake[0].y > 15 * box && direções == "down"){
+        snake[0].y = 0;
+    }
+    if(snake[0].y < 0 && direções == "up"){
+        snake[0].y = 16 * box;
+    }
 
     //passar todas as outras funções para iniciar tudo
     criarBG();
