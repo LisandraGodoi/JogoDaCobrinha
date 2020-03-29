@@ -1,0 +1,50 @@
+h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: green;
+}
+
+body{ 
+    height: 95vh;
+    width: 95;
+    display: flex;
+    /* justify horizontalmente no meio
+    align verticalmente no meio*/
+    justify-content: center;
+    align-items: center;
+    /* pra um elemento ficar abaixo do outro*/
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+  
+body{
+    height: 95vh;
+    width: 95vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    color: rgb(52, 165, 52);
+}
+*/

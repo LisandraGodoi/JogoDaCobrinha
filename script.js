@@ -93,15 +93,39 @@ function update(event){
 //encostar no próprio corpo
 function iniciarJogo(){  
 
+
+    //proibir que o corpo se choque com a cabeça com um 
+    //loop for corpo é a variável i. Se zero(cabeça) se 
+    //chocar com 1 (corpo), para tudo
+    
+    for(i = 1; i < snake.length; i++){
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+            clearInterval(jogo);
+            alert('Game Over');
+        }
+    }
+
     //permitir que ela saia por um lado e volte pelo outro 
     //com um plano cartesiano que tem o x0 e o y0 
     //indo até 16 dos dois lados. Quando chegar no zero, volta
     // o valor no 15 e vice versa 
     //se snake[0].(cabeça) passar de 15, volta para zero
-    if(snake[0].x > 15*box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == 'left') snake[0].x = 16 * box;
-    if(snake[0].y > 15*box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == 'up') snake[0].y = 16 * box;
+    if(snake[0].x > 15*box && direction == "right") {
+        clearInterval(jogo);
+        alert('Game Over');
+    }
+    if(snake[0].x < 0 && direction == 'left') {
+        clearInterval(jogo);
+        alert('Game Over');
+    }
+    if(snake[0].y > 15*box && direction == "down") {
+        clearInterval(jogo);
+        alert('Game Over');
+    }
+    if(snake[0].y < 0 && direction == 'up') {
+        clearInterval(jogo);
+        alert('Game Over');
+    }
     
 
     //passar todas as outras funções para iniciar tudo
@@ -125,9 +149,20 @@ function iniciarJogo(){
     if (direction == "up") snakeY -= box;
     if(direction == "down") snakeY += box;
 
-    //adicionar função pop para tirar o ultimo elemento
-    //do array quando a cobra andar
-    snake.pop();
+
+
+    //caso a cobra passe na comida, ela some e aumenta a cobra
+    if(snakeX != food.x || snakeY != food.y){
+        //adicionar função pop para tirar o ultimo elemento
+        //do array quando a cobra andar
+        snake.pop();
+    }
+    else{
+        food.x =  Math.floor(Math.random() * 15 + 1) * box;
+        food.y = Math.floor(Math.random() * 15 + 1) * box;
+    }
+
+
 
     //adicionar a cabeça com um método que sempre adiciona
     // um primeiro elemento
